@@ -4,7 +4,9 @@
 @section('title', 'The list of tasks')
 
 @section('content')
-<div>
+  <div>
+    <a href="{{ route('tasks.create') }}"><button>Add Task</button></a>
+  </div>
   @forelse ($tasks as $task)
     <div>
       <a href="{{ route('tasks.show', ['task' => $task]) }}">{{ $task->title }}</a>
@@ -17,5 +19,4 @@
     <nav> {{ $tasks->links('pagination::simple-bootstrap-5') }} </nav>
     <div> Showing {{ $tasks->firstItem() }} to {{ $tasks->lastItem() }} of {{ $tasks->total() }} results </div> 
   @endif
-</div>
 @endsection
