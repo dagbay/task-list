@@ -4,19 +4,21 @@
 @section('title', 'The list of tasks')
 
 @section('content')
-  <div>
-    <a href="{{ route('tasks.create') }}"><button>Add Task</button></a>
-  </div>
+  <nav class="mb-4">
+    <button class="btn btn-primary font-medium text-gray-700 underline decoration-pink-500">
+      <a href="{{ route('tasks.create') }}">Add Task</a>
+    </button>
+  </nav>
+
   @forelse ($tasks as $task)
     <div>
-      <a href="{{ route('tasks.show', ['task' => $task]) }}">{{ $task->title }}</a>
+      <a href="{{ route('tasks.show', ['task' => $task]) }}" @class(['font-bold', 'line-through' => $task->completed])>{{ $task->title }}</a>
     </div>
   @empty
     <div>There are no tasks!</div>
   @endforelse
   
   @if ($tasks->count())
-    <nav> {{ $tasks->links('pagination::simple-bootstrap-5') }} </nav>
-    <div> Showing {{ $tasks->firstItem() }} to {{ $tasks->lastItem() }} of {{ $tasks->total() }} results </div> 
+    <nav class="mt-4"> {{ $tasks->links() }} </nav>
   @endif
 @endsection
