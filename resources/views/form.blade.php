@@ -51,7 +51,7 @@
           Add Task
         @endisset
       </button>
-      <a href="{{ route('tasks.index', ['task' => $task->id]) }}" class="btn-delete">
+      <a href="{{ route('tasks.index') }}" class="btn-delete">
         Cancel
       </a>
     </div>
